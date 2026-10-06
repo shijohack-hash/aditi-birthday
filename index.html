@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Happy Birthday Aditi ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0618;--pk:#ff5fa2;--pu:#9b6bff;--bl:#5fb4ff;--tx:#fff3fa}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--tx);font-family:Fraunces,Georgia,serif;overflow:hidden}
+body{background:radial-gradient(circle at 20% 10%,#3b1458 0,transparent 50%),radial-gradient(circle at 85% 90%,#5a1535 0,transparent 50%),var(--bg)}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+#bg{z-index:0}#fx{z-index:50}
+#stage{position:fixed;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(56px + env(safe-area-inset-top)) 20px calc(24px + env(safe-area-inset-bottom));overflow-y:auto;gap:14px;transition:opacity .6s,transform .6s}
+#stage.out{opacity:0;transform:scale(1.08)}
+h1{font-size:clamp(34px,11vw,64px);margin:0;line-height:1.05;text-shadow:0 0 30px var(--pk)}
+h2{font-size:clamp(22px,6.5vw,34px);margin:0;font-weight:400}
+p{margin:0;font-size:18px;line-height:1.5;max-width:420px}
+.hand{font-family:Caveat,cursive;font-size:25px;line-height:1.35}
+.fade{opacity:0;animation:fi 1.4s forwards}@keyframes fi{to{opacity:1}}
+button,.btn{font:700 17px Fraunces,serif;color:#fff;background:linear-gradient(135deg,var(--pk),var(--pu));border:0;border-radius:40px;padding:14px 28px;box-shadow:0 0 24px #ff5fa288;cursor:pointer;touch-action:manipulation;transition:transform .15s}
+button:active{transform:scale(.93)}
+.glass{background:#ffffff14;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid #ffffff30;border-radius:20px;padding:16px}
+input{font:600 24px Fraunces,serif;text-align:center;letter-spacing:6px;text-transform:uppercase;width:min(300px,80vw);padding:14px;border-radius:16px;border:2px solid #ffffff44;background:#ffffff14;color:#fff;outline:0}
+input.ok{border-color:#7dffb0;box-shadow:0 0 30px #7dffb0}
+#hud{position:fixed;top:calc(10px + env(safe-area-inset-top));left:0;right:0;z-index:20;display:none;justify-content:space-between;padding:0 14px;align-items:center;font-size:14px}
+#hud button{padding:8px 14px;font-size:15px;box-shadow:none;background:#ffffff22}
+#bar{display:flex;gap:3px}#bar i{width:9px;height:9px;border-radius:50%;background:#ffffff30}#bar i.on{background:var(--pk);box-shadow:0 0 8px var(--pk)}
+.pair{display:flex;gap:18px;align-items:flex-end;justify-content:center;min-height:120px}
+.ch{width:84px;animation:bob 1.2s ease-in-out infinite}.ch.b{animation-delay:.4s}
+.ch.jump{animation:jump .5s 3}
+@keyframes bob{50%{transform:translateY(-8px) rotate(3deg)}}
+@keyframes jump{50%{transform:translateY(-40px)}}
+.shake{animation:sh .5s}@keyframes sh{25%{transform:translate(6px,-4px)}50%{transform:translate(-6px,4px)}75%{transform:translate(4px,6px)}}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;width:min(380px,100%)}
+.card{aspect-ratio:3/4;perspective:700px;cursor:pointer}
+.card>div{position:relative;width:100%;height:100%;transition:transform .8s;transform-style:preserve-3d}
+.card.flip>div{transform:rotateY(180deg)}
+.card .f,.card .k{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:15px;padding:8px}
+.card .k{background:#ffffff14;border:1px solid #ffffff40;font-size:16px}
+.card .f{transform:rotateY(180deg);background:#fff;color:#2a1536;padding:8px 8px 12px}
+.card .f .ph{flex:1;width:100%;min-height:0;background-size:cover;background-position:center 25%;border-radius:6px;background:linear-gradient(135deg,#ffb3d1,#b9a1ff) center/cover;display:flex;align-items:center;justify-content:center;font-size:44px}
+.card .f span{font-family:Caveat;font-size:19px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;width:min(340px,100%)}
+.cal b{font-size:12px;opacity:.6}.cal i{font-style:normal;padding:9px 0;border-radius:10px;cursor:pointer}
+.cal i.hit{background:var(--pk);box-shadow:0 0 22px var(--pk);font-weight:700}
+.tl{width:min(360px,100%);text-align:left;border-left:2px solid var(--pk);padding-left:16px;display:flex;flex-direction:column;gap:18px;box-shadow:-6px 0 14px -8px var(--pk)}
+.tl div{opacity:0;transform:translateY(20px);transition:.8s}.tl div.in{opacity:1;transform:none}
+.tl b{color:var(--pk)}
+.food{position:fixed;font-size:44px;z-index:8;cursor:pointer;animation:fl 6s linear forwards;touch-action:manipulation}
+@keyframes fl{from{transform:translateY(0)}to{transform:translateY(-110vh)}}
+.env{font-size:60px;cursor:pointer;filter:drop-shadow(0 0 14px var(--pk))}
+.gift{font-size:110px;cursor:pointer;filter:drop-shadow(0 0 30px var(--pk));animation:bob 1.4s infinite}
+.cake{font-size:120px;position:relative}
+.cake .cd{position:absolute;top:-34px;left:50%;transform:translateX(-50%);font-size:26px;letter-spacing:4px;white-space:nowrap}
+.dark{position:fixed;inset:0;background:#000;z-index:30;pointer-events:none;transition:opacity 4s}
+.letter{background:#fff4e6;color:#4a2a3a;border-radius:6px;padding:22px;max-width:380px;text-align:left;box-shadow:0 10px 40px #000a;white-space:pre-line}
+#toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:60;background:#000c;padding:10px 18px;border-radius:30px;opacity:0;transition:.4s;pointer-events:none}
+#toast.on{opacity:1}
+#load{position:fixed;inset:0;z-index:100;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:56px;animation:bob 1s infinite;transition:opacity .6s}
+</style></head><body>
+<div id="load">♡</div>
+<canvas id="bg"></canvas><canvas id="fx"></canvas>
+<div id="hud"><div id="bar"></div><div><button id="mute">♫</button> <button id="back">↺</button></div></div>
+<div id="stage"></div><div id="toast"></div>
+<audio id="aud" loop preload="auto"></audio>
+<script>
+/* ============ EDIT ME ============ */
+const CFG={
+ audio:"Happy_Birthday_Aditi.mp3",           // put the mp3 next to this file
+ answer:"SHIJO",
+ birthday:{day:10,month:6,year:2008,label:"10 July 2008"}, // month 0-based: 6 = July (10/07/2008 read as DD/MM)
+ photos:[ // src:"photos/1.jpg" -> leave "" to show a placeholder
+  {src:"photos/1.jpg",cap:"Main character energy ✨"},{src:"photos/2.jpg",cap:"Your smile >>>"},
+  {src:"photos/4.jpg",cap:"Pretty much iconic."},{src:"photos/3.jpg",cap:"That picture I can never skip."}],
+ finalPhoto:"photos/3.jpg",
+ quote:["Small moments, big memories.","— Claude"],
+ story:[["MARCH","Where everything started..."],["FIRST CONVERSATION","The first time we..."],
+  ["FIRST SPECIAL MOMENT","That moment when..."],["FUNNIEST MEMORY","That one time..."],
+  ["FAVORITE MEMORY","One memory I'll always remember..."],["TODAY","And somehow, we're here."]],
+ quotes:["Some memories become stories.","Some stories become forever memories.","March was just the beginning."],
+ envelopes:[["Open when you're smiling 💌","Write your message here."],
+  ["Open when you want a memory 💗","Write your message here."],["Open when you think this is over 👀","Write your message here."]],
+ letter:`Aditi,\n\nHappy Birthday. ♡\n\nI wanted to make something that wasn't just another message.\n\nSo I made this tiny world filled with your pictures, memories, random games, Dudu & Bubu, food, cake, and a ridiculous amount of effort.\n\nThank you for being part of so many moments worth remembering.\n\nHere's to all the memories still waiting to happen.\n\n— Shijo`
+};
+/* ================================= */
+const $=s=>document.querySelector(s),st=$('#stage'),aud=$('#aud'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
+aud.src=CFG.audio;
+let cur=+(localStorage.getItem('aditi_scene')||0),started=false,tok=0;
+const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2000)};
+/* characters (original cartoon bears) */
+const bear=(c,ear,x)=>`<svg class="ch ${x||''}" viewBox="0 0 100 100"><circle cx="24" cy="22" r="13" fill="${c}"/><circle cx="76" cy="22" r="13" fill="${c}"/><circle cx="24" cy="22" r="6" fill="${ear}"/><circle cx="76" cy="22" r="6" fill="${ear}"/><ellipse cx="50" cy="60" rx="38" ry="34" fill="${c}"/><circle cx="37" cy="54" r="4.5" fill="#222"/><circle cx="63" cy="54" r="4.5" fill="#222"/><circle cx="38.5" cy="52.5" r="1.5" fill="#fff"/><circle cx="64.5" cy="52.5" r="1.5" fill="#fff"/><ellipse cx="50" cy="66" rx="5" ry="3.5" fill="#222"/><path d="M42 72q8 8 16 0" stroke="#222" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="28" cy="66" r="6" fill="#ff8fb5" opacity=".6"/><circle cx="72" cy="66" r="6" fill="#ff8fb5" opacity=".6"/></svg>`;
+const duo=()=>`<div class="pair" id="duo">${bear('#d9a273','#f3c9a0')}${bear('#fff','#ffc4dc','b')}</div>`;
+const cheer=()=>{document.querySelectorAll('.ch').forEach(c=>{c.classList.remove('jump');void c.offsetWidth;c.classList.add('jump')});boom()};
+/* background */
+const bg=$('#bg'),bx=bg.getContext('2d'),fx=$('#fx'),fc=fx.getContext('2d');let W,H,bits=[],conf=[];
+function rs(){W=bg.width=fx.width=innerWidth;H=bg.height=fx.height=innerHeight}rs();addEventListener('resize',rs);
+for(let i=0;i<45;i++)bits.push({x:Math.random()*W,y:Math.random()*H,s:Math.random()*2+1,v:Math.random()*.4+.15,h:Math.random()<.25});
+function boom(n=90,x=W/2,y=H/2,hearts){for(let i=0;i<n;i++){const a=Math.random()*6.28,s=Math.random()*9+3;conf.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-4,c:['#ff5fa2','#9b6bff','#5fb4ff','#ffd35f','#fff'][i%5],l:90,h:hearts||i%4==0})}}
+(function loop(){bx.clearRect(0,0,W,H);bits.forEach(b=>{b.y-=b.v;if(b.y<-10){b.y=H+10;b.x=Math.random()*W}bx.fillStyle=b.h?'#ff5fa266':'#ffffffaa';b.h?(bx.font=b.s*8+'px serif',bx.fillText('♥',b.x,b.y)):bx.fillRect(b.x,b.y,b.s,b.s)});
+fc.clearRect(0,0,W,H);conf=conf.filter(p=>p.l>0);conf.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.25;p.l--;fc.globalAlpha=p.l/90;fc.fillStyle=p.c;p.h?(fc.font='18px serif',fc.fillText('♥',p.x,p.y)):fc.fillRect(p.x,p.y,6,9)});requestAnimationFrame(loop)})();
+addEventListener('pointerdown',e=>boom(6,e.clientX,e.clientY,true));
+/* helpers */
+const btn=(t,f,id)=>{const b=document.createElement('button');b.textContent=t;b.className='fade';if(id)b.id=id;b.onclick=f;return b};
+async function say(lines,gap=1700,cls='h2'){for(const l of lines){const e=document.createElement(cls=='h1'?'h1':'h2');e.className='fade';e.innerHTML=l;st.append(e);await sleep(gap)}}
+function go(i){tok++;cur=i;localStorage.setItem('aditi_scene',i);st.classList.add('out');setTimeout(()=>{st.innerHTML='';st.classList.remove('out');$('#hud').style.display=i>0?'flex':'none';$('#bar').innerHTML=S.map((_,k)=>`<i class="${k<=i?'on':''}"></i>`).join('');S[i]()},500)}
+const next=()=>go(cur+1);
+const photo=(src,ph='📷')=>src?`<div class="ph" style="background-image:url('${src}')"></div>`:`<div class="ph">${ph}</div>`;
+/* ============ SCENES ============ */
+const S=[
+async()=>{const t=tok;st.innerHTML='<h2 class="fade" style="font-size:60px">♥</h2>';await sleep(1800);
+ await say(["Someone made a tiny world just for you...","Because today isn't just another day."],2300);
+ await say(["HAPPY BIRTHDAY"],1500,'h1');await say(["ADITI ♡"],1500,'h1');await say(["<span class=hand>Made by Shijo</span>"],1200);
+ st.append(btn("ENTER YOUR SURPRISE ✨",()=>{boom(200,W/2,H/2,true);next()}))},
+()=>{st.innerHTML=duo();const [a,b]=st.querySelectorAll('.ch');a.style.transform='translateX(-200px)';
+ setTimeout(()=>cheer(),700);(async()=>{await say(["Meet your two tiny birthday assistants...","Dudu &amp; Bubu ♡","They have a few things to show you."],1900);st.append(btn("Let's go 👀",next))})()},
+()=>{st.innerHTML=`${duo()}<h2>Before we continue...</h2><p>There's one tiny thing you need to prove 👀<br>Enter your husband's name 💌</p><input id=nm placeholder="Type his name..." maxlength=10 autocomplete=off autocapitalize=characters><p id=msg class=hand></p>`;
+ const i=$('#nm'),m=$('#msg'),tries=["Try againnn 😭","That's not it 👀","Hint: S _ I _ O"];let n=0;
+ i.oninput=()=>{i.value=i.value.toUpperCase().replace(/[^SHIJOUTYEW]/g,'');if(i.value.length>=CFG.answer.length){if(i.value==CFG.answer){i.classList.add('ok');cheer();m.textContent="CORRECT! 😭❤️ You actually know him.";setTimeout(()=>{toast("Memory vault unlocked 🔓");next()},2600)}else{m.textContent=tries[n++%3];i.value='';st.classList.add('shake');setTimeout(()=>st.classList.remove('shake'),500)}}}},
+()=>{const d=CFG.birthday,first=new Date(d.year,d.month,1).getDay(),dim=new Date(d.year,d.month+1,0).getDate();
+ let h='<h2>One more thing...</h2><p>Can you find the special date? 👀</p><div class="glass"><h2>'+new Date(d.year,d.month).toLocaleString('en',{month:'long'})+' '+d.year+'</h2><br><div class=cal>'+'SMTWTFS'.split('').map(x=>`<b>${x}</b>`).join('')+'<span></span>'.repeat(first);
+ for(let k=1;k<=dim;k++)h+=`<i data-d=${k}>${k}</i>`;st.innerHTML=h+'</div></div><p id=msg class=hand></p>';
+ st.querySelectorAll('i').forEach(e=>e.onclick=()=>{if(+e.dataset.d==d.day){e.classList.add('hit');boom(150);$('#msg').innerHTML="Yep... that's the day Shijo entered the world ✨<br>Okay, enough about him 😭 Let's talk about YOU.";st.append(btn("Continue",next))}else{toast("Not that one 👀")}})},
+()=>{let seen=0;st.innerHTML=`<h1>MEMORY VAULT 🔐</h1><p>Every memory is waiting to be unlocked.</p><div class=grid>${CFG.photos.map((p,k)=>`<div class=card><div><div class=k>🔒<br>MEMORY #0${k+1}</div><div class=f>${photo(p.src)}<span>${p.cap}</span></div></div></div>`).join('')}</div>`;
+ st.querySelectorAll('.card').forEach(c=>c.onclick=()=>{if(c.classList.contains('flip'))return;c.classList.add('flip');boom(40,c.getBoundingClientRect().x+60,c.getBoundingClientRect().y+80,true);if(++seen==CFG.photos.length)setTimeout(()=>st.append(btn("Next ✨",next)),900)})},
+()=>{st.innerHTML='<h1>OUR STORY</h1><div class=tl>'+CFG.story.map(s=>`<div><b>${s[0]}</b><br>${s[1]}</div>`).join('')+'</div>';
+ const els=[...st.querySelectorAll('.tl div')];els.forEach((e,k)=>setTimeout(()=>e.classList.add('in'),700+k*900));setTimeout(()=>st.append(btn("Continue 🎬",next)),700+els.length*900)},
+async()=>{const t=tok;st.style.background='#000';const L=["THE STORY SO FAR...","MARCH.<br>One random beginning.","HUNDREDS OF CONVERSATIONS.","COUNTLESS RANDOM MOMENTS.","TOO MANY MEMORIES TO COUNT.","AND ONE BIRTHDAY GIRL.","ADITI × SHIJO","MORE MEMORIES COMING SOON..."];
+ for(const l of L){if(t!=tok)return;st.innerHTML=`<h1 class=fade style="font-size:clamp(26px,8vw,48px)">${l}</h1>`;await sleep(2300)}
+ for(const q of CFG.quotes){if(t!=tok)return;st.innerHTML=`<h2 class="fade hand" style="font-size:34px">${q}</h2>`;await sleep(3000)}
+ st.style.background='';st.innerHTML='';st.append(btn("Continue",next))},
+()=>{const Q=[["Who made this ridiculously long birthday website?",["Dudu","Bubu","Shijo 😭"],2],["What would Shijo probably choose first?",["🍕 Food","😴 Sleep","🎮 Games","😂 Chaos"],-1],["What name were you supposed to enter?",["Shijo","Shijo","Shijo"],-1]];let q=0;
+ const show=()=>{if(q>=Q.length){st.innerHTML=duo()+'<h2>10/10 Shijo expert 🏆</h2>';cheer();st.append(btn("Next",next));return}
+ const[t,o,c]=Q[q];st.innerHTML=duo()+`<h2>${t}</h2>`;o.forEach((x,k)=>{const b=btn(x,()=>{if(c<0||k==c){cheer();toast("Correct! 🎉");q++;setTimeout(show,900)}else{st.classList.add('shake');toast("Nope 😭");setTimeout(()=>st.classList.remove('shake'),500)}});b.style.animation='none';b.style.opacity=1;st.append(b)})};show()},
+()=>{let n=0,run=true;const t=tok;st.innerHTML=`<h2>Okay Aditi... enough emotions.</h2><h1>TIME FOR FOOD 🍕😭</h1><h2 id=ct>FOOD COLLECTED 0 / 10</h2>`;
+ const F='🍕🍔🍟🍩🍰🍦🍫🌮🍪🧁🍜🍓'.match(/./gu);
+ const iv=setInterval(()=>{if(t!=tok||!run){clearInterval(iv);return}const e=document.createElement('div');e.className='food';e.textContent=F[Math.random()*F.length|0];e.style.left=Math.random()*(W-60)+'px';e.style.top=(H*.4+Math.random()*H*.5)+'px';
+  e.onpointerdown=ev=>{ev.stopPropagation();e.remove();boom(15,ev.clientX,ev.clientY);$('#ct').textContent=`FOOD COLLECTED ${++n} / 10`;if(n>=10){run=false;document.querySelectorAll('.food').forEach(x=>x.remove());st.innerHTML=duo()+'<h1>10/10!</h1><h2>Certified Food Monster unlocked 😭🍕</h2>';cheer();st.append(btn("Next",next))}};
+  document.body.append(e);setTimeout(()=>e.remove(),6000)},650);window._food=iv},
+()=>{let seen=0;st.innerHTML='<h1>Three secret envelopes</h1><div id=ev style="display:flex;flex-direction:column;gap:12px;width:min(380px,100%)"></div>';
+ CFG.envelopes.forEach(([t,m])=>{const d=document.createElement('div');d.className='glass';d.innerHTML=`<div class=env>✉️</div><p>${t}</p>`;d.onclick=()=>{if(d.dataset.o)return;d.dataset.o=1;d.innerHTML=`<div class=env>💌</div><p class=hand>${m}</p>`;boom(50,W/2,H/2,true);if(++seen==3)st.append(btn("Next",next))};$('#ev').append(d)})},
+()=>{st.innerHTML='<h2>I left one thing here for you...</h2><div class=gift id=g>🎁</div>';st.append(btn("Open it 🎁",()=>{const g=$('#g');g.classList.add('shake');setTimeout(()=>{g.textContent='🎀';boom(220,W/2,H/2,true);st.querySelector('button').remove();st.append(Object.assign(document.createElement('h2'),{textContent:'Birthday girl officially unlocked 🎀'}));st.append(btn("Cake time 🎂",next))},700)}))},
+()=>{st.innerHTML=duo()+'<h1>HAPPY BIRTHDAY ADITI!!! 🎂</h1><div class=hand style="font-size:44px">🎈🎈🎉🎈🎈</div>';cheer();setTimeout(cheer,1500);st.append(btn("Bring the cake 🎂",next))},
+()=>{st.innerHTML='<div class=cake><div class=cd id=cd></div>🎂</div><h2 id=t>Lighting the candles...</h2>';let k=0;const c=$('#cd'),iv=setInterval(()=>{c.textContent+='🕯️';if(++k==3){clearInterval(iv);$('#t').textContent="Make a wish, birthday girl ✨ (tap the cake)";$('.cake').onclick=()=>{c.textContent='💨';$('#t').textContent='';boom(250,W/2,H/2,true);st.classList.add('shake');st.insertAdjacentHTML('afterbegin',duo());cheer();setTimeout(()=>{$('.cake').textContent='🍰';st.append(Object.assign(document.createElement('h2'),{textContent:'Hope this year gives you even more reasons to smile.'}));st.append(btn("Next",next))},1200)}}},800)},
+async()=>{st.innerHTML='';const p=CFG.finalPhoto;st.innerHTML=`<div class="card" style="width:min(300px,70vw);opacity:0;transition:opacity 4s;cursor:default" id=fp><div class=f style="position:relative;transform:none;height:100%;width:100%;display:flex;background:#fff;padding:8px;border-radius:12px">${photo(p,'💗')}</div></div>`;await sleep(100);$('#fp').style.opacity=1;
+ await sleep(3500);await say(["Out of everything I could have given you...","I wanted to give you something you could keep.","HAPPY BIRTHDAY, ADITI ♡","<span class=hand>— SHIJO</span>"],2200);st.append(btn("ONE LAST SURPRISE 👀",next))},
+async()=>{st.innerHTML='';await say(["Okay...","That's everything."],2000);await sleep(2000);await say(["...","OR IS IT? 👀"],1800);const b=btn("One more thing...",next);b.style.boxShadow='0 0 60px var(--bl)';st.append(b)},
+async()=>{const t=tok;st.innerHTML='';const d=document.createElement('div');d.className='dark';d.style.opacity=1;document.body.append(d);await sleep(2500);
+ st.innerHTML=duo()+'<div style="font-size:50px">🕯️ 🎂</div>';d.style.opacity=0;setTimeout(()=>d.remove(),4200);await sleep(2500);
+ st.insertAdjacentHTML('beforeend','<div style="font-size:42px">🎈✨🎁💗⭐🎈</div>');boom(300,W/2,H/2,true);await sleep(1500);
+ await say(["HAPPY BIRTHDAY","ADITI ♡","<span class=hand>— SHIJO</span>"],1800,'h1');boom(400,W/2,H/3,true);aud.volume=1;if(t==tok)st.append(btn("Read my note 💌",next))},
+()=>{st.innerHTML=`<div class="letter hand fade">${CFG.letter}</div>`;st.append(btn("The end...?",next))},
+()=>{st.innerHTML='<h1>THE END...?</h1><p class=hand style="opacity:.7;font-size:20px">'+CFG.quote[0]+' <small>'+CFG.quote[1]+'</small></p>';[["Replay from the beginning ↻",()=>{localStorage.removeItem('aditi_scene');go(0)}],["Open the memory vault again 🔐",()=>go(4)],["Play the birthday song ♫",()=>{aud.currentTime=0;aud.play()}]].forEach(([t,f])=>{const b=btn(t,f);b.style.animation='none';b.style.opacity=1;st.append(b)})}
+];
+/* ============ START / AUDIO ============ */
+function startAudio(){if(aud.dataset.on)return;aud.dataset.on=1;aud.muted=false;aud.currentTime=0;aud.volume=1;aud.play().catch(()=>{delete aud.dataset.on});}
+addEventListener('click',startAudio,{once:true});addEventListener('touchend',startAudio,{once:true});
+aud.addEventListener('error',()=>toast('Song file not found - keep the mp3 next to index.html'));
+$('#mute').onclick=()=>{aud.muted=!aud.muted;$('#mute').textContent=aud.muted?'🔇':'♫'};
+$('#back').onclick=()=>{if(window._food)clearInterval(window._food);document.querySelectorAll('.food,.dark').forEach(x=>x.remove());go(Math.max(0,cur-1))};
+function boot(){$('#load').style.opacity=0;setTimeout(()=>$('#load').remove(),600);
+ const resume=cur>0&&cur<S.length;
+ st.innerHTML=`<h1>♡</h1><h2>Tap to start your birthday surprise 🎵</h2>`;
+ st.append(btn(resume?"Continue where you left off":"Tap to start",()=>{started=true;startAudio();go(resume?cur:0)}));
+ if(resume)st.append(Object.assign(btn("Start from the beginning",()=>{started=true;startAudio();go(0)}),{style:'background:#ffffff22;box-shadow:none'}))}
+addEventListener('load',()=>setTimeout(boot,500));
+</script></body></html>
